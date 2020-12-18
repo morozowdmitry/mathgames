@@ -2,4 +2,6 @@
 **/.idea
 /venv
 /invaiders/config/mathgames-google_key.json
+/invaiders/config/sheets.conf
+/invaiders/config/teams.conf
 
