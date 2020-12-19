@@ -3,7 +3,7 @@ import datetime
 
 def string2date(date_string):
     if date_string:
-        date_time_obj = datetime.datetime.strptime(date_string, '%d/%m/%Y %H:%M:%S')
+        date_time_obj = datetime.datetime.strptime(date_string, '%m/%d/%Y %H:%M:%S')
     else:
         date_time_obj = datetime.datetime(year=2020, month=10, day=31)
     return date_time_obj

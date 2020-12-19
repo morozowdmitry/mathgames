@@ -36,16 +36,18 @@ class ProblemAnswer(object):
     @staticmethod
     def problem2weight(number):
         number = int(number)
-        if number < 8:
+        if number in [1, 2, 3, 4, 5, 6, 7, 31]:
             return 3
-        elif number < 18:
+        elif number in [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 32]:
             return 5
-        elif number < 23:
+        elif number in [18, 19, 20, 21, 22, 33]:
             return 8
-        elif number < 28:
+        elif number in [23, 24, 25, 26, 27, 34]:
             return 11
-        else:
+        elif number in [28, 29, 30]:
             return 15
+        else:
+            return 0
 
 
 class Field(object):
@@ -200,7 +202,7 @@ if __name__ == "__main__":
         cell_matrix = answers_worksheet.get_all_values(returnas='matrix')
 
         df = pd.DataFrame(cell_matrix[1:], columns=cell_matrix[0])
-        df.loc[:, 'Отметка времени (dt)'] = df['Отметка времени'].apply(string2date)
+        df.loc[:, 'Отметка времени (dt)'] = df['Timestamp'].apply(string2date)
 
         new_answers = df[(df['Отметка времени (dt)'] != string2date('')) & (df['Отметка времени (dt)'] > last_timepoint)]
 
@@ -302,7 +304,7 @@ if __name__ == "__main__":
         for team_alias in 'ABCDEFGH':
             team_row = list()
             team_row.append(f"Команда {team_alias}")
-            for i in range(1, 31):
+            for i in range(1, 35):
                 if str(i) not in teams[alias2code[team_alias]].problems:
                     team_row.append('')
                 elif teams[alias2code[team_alias]].problems[str(i)].status == 'used':
