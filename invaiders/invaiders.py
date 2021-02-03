@@ -65,9 +65,9 @@ class Field(object):
             neighbours.append(f"{self.x - 1},{self.y}")
         if self.y > 1:
             neighbours.append(f"{self.x},{self.y - 1}")
-        if self.x < 9:
+        if self.x < 13:
             neighbours.append(f"{self.x + 1},{self.y}")
-        if self.y < 9:
+        if self.y < 13:
             neighbours.append(f"{self.x},{self.y + 1}")
         return neighbours
 
@@ -304,7 +304,7 @@ if __name__ == "__main__":
         for team_alias in 'ABCDEFGH':
             team_row = list()
             team_row.append(f"Команда {team_alias}")
-            for i in range(1, 35):
+            for i in range(1, 31):
                 if str(i) not in teams[alias2code[team_alias]].problems:
                     team_row.append('')
                 elif teams[alias2code[team_alias]].problems[str(i)].status == 'used':
