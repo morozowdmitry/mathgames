@@ -140,15 +140,15 @@ if __name__ == "__main__":
     with open('config/field_owner.conf', 'r') as f:
         field_owners = f.readlines()
 
-    for i in range(0, 9):
-        for j in range(0, 9):
+    for i in range(0, 13):
+        for j in range(0, 13):
             x = i + 1
             y = j + 1
             weight = int(field_weights[i].strip().split('\t')[j])
             counter = 0
             can_be_taken = field_takens[i].strip().split('\t')[j]
             owner = field_owners[i].strip().split('\t')[j]
-            if owner in 'ABCDEFGH':
+            if owner in 'ABCDEFGHIJKL':
                 teams[alias2code[owner]].fields_coords.add(f"{str(x)},{str(y)}")
             game_field[f"{str(x)},{str(y)}"] = Field(x=x,
                                                      y=y,
@@ -270,7 +270,7 @@ if __name__ == "__main__":
         warning_worksheet.update_values('A1', warnings)
 
         map = list()
-        for i in range(0, 9):
+        for i in range(0, 13):
             line_one = list()
             line_second = list()
             line_third = list()
@@ -301,7 +301,7 @@ if __name__ == "__main__":
         results_worksheet.update_values('C3', map)
 
         problems = list()
-        for team_alias in 'ABCDEFGH':
+        for team_alias in 'ABCDEFGHIJKL':
             team_row = list()
             team_row.append(f"Команда {team_alias}")
             for i in range(1, 31):
